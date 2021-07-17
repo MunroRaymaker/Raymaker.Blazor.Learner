@@ -6,9 +6,23 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<div class="container-fluid">
+    <p>
+        Enter your name <input type="text" @bind-value="@Name" @bind-value:event="oninput"/>
+    </p>
+    <p>
+        Your name is @Name.
+    </p>
+</div>
+
+@functions
+{
+    private string Name { get; set; } = "";
+}
+
 @code {
     private int currentCount = 0;
-
+    
     private void IncrementCount()
     {
         currentCount++;

@@ -27,6 +27,7 @@ else
             <th>Last Name</th>
             <th>Email</th>
             <th>Experience (Years)</th>
+            <th>Team</th>
             <th></th>
         </tr>
         </thead>
@@ -39,6 +40,7 @@ else
                 <td>@dev.LastName</td>
                 <td>@dev.Email</td>
                 <td>@dev.Experience</td>
+                <td>@dev.Team.ToString()</td>
                 <td>
                     <a class="btn btn-success" href="developer/edit/@dev.Id">Edit</a>
                     <button class="btn btn-danger" @onclick="@(() => Delete(dev.Id))">Delete</button>
@@ -51,6 +53,7 @@ else
 }
 @code {
     Developer[] developers { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         developers = await client.GetFromJsonAsync<Developer[]>("api/developer");
